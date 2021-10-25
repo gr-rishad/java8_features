@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 class Student {
@@ -55,14 +56,18 @@ public class FunctionExample {
 
             return grade;
         };
+        Predicate<Student> studentPredicate = s -> s.mark >= 60;
 
         //List<Student> studentList = st.stream().filter(s ->  ).collect(Collectors.toList());
 
 
         for (Student student : st) {
-            System.out.println("Student name :" + student.name);
-            System.out.println("Student Marks :" + student.mark);
-            System.out.println("Student Grade :" + f.apply(student));
+            if (studentPredicate.test(student)) {
+                System.out.println("Student name :" + student.name);
+                System.out.println("Student Marks :" + student.mark);
+                System.out.println("Student Grade :" + f.apply(student));
+            }
+
         }
     }
 }
