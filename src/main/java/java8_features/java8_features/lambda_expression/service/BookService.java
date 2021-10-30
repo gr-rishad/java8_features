@@ -9,6 +9,8 @@ import java.util.List;
 
 public class BookService {
 
+
+
     public List<Book> getBooksInSort() {
         List<Book> books = new BookDao().getBooks();
 //        Collections.sort(books, new Comparator<Book>() {
@@ -28,10 +30,10 @@ public class BookService {
     }
 }
 
-//class MyComparator implements Comparator<Book>{
-//
-//    @Override
-//    public int compare(Book o1, Book o2) {
-//        return o1.getName().compareTo(o2.getName());
-//    }
-//}
+class MyComparator implements Comparator<Book> {
+
+    @Override
+    public int compare(Book o1, Book o2) {
+        return o1.getName().compareTo(o2.getName());
+    }
+}
